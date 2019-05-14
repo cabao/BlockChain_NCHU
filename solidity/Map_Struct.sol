@@ -31,4 +31,13 @@ contract member_detail {
     function getStudent(uint _id) public already_active(_id) view returns (string memory, uint, uint){
         return (students[_id].name, students[_id].score, students[_id].startTime);
     }
+    
+    function abandon(uint _id) public already_active(_id){
+        students[_id] = Student({
+            active: false,
+            name: "", 
+            score: 0, 
+            startTime: now 
+        });
+    }
 }
